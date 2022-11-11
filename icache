@@ -1,0 +1,155 @@
+#! /usr/bin/vvp
+:ivl_version "10.3 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "vhdl_sys";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x557d2a56b0d0 .scope module, "icache_tb" "icache_tb" 2 1;
+ .timescale 0 0;
+P_0x557d2a56b250 .param/l "WIDTH" 0 2 2, +C4<00000000000000000000000000100000>;
+v0x557d2a5bb260_0 .var "CLK", 0 0;
+v0x557d2a5bb320_0 .var "PC", 31 0;
+v0x557d2a5bb3f0_0 .var "RST", 0 0;
+v0x557d2a5bb4f0_0 .net "instruction", 31 0, L_0x557d2a5a47e0;  1 drivers
+S_0x557d2a5a3fe0 .scope module, "imem" "icache" 2 22, 3 1 0, S_0x557d2a56b0d0;
+ .timescale 0 0;
+    .port_info 0 /INPUT 32 "PC"
+    .port_info 1 /OUTPUT 32 "instruction"
+    .port_info 2 /INPUT 1 "CLK"
+    .port_info 3 /INPUT 1 "RST"
+P_0x557d2a5a41b0 .param/l "WIDTH" 0 3 2, +C4<00000000000000000000000000100000>;
+L_0x557d2a5a47e0 .functor BUFZ 32, L_0x557d2a5bb6e0, C4<00000000000000000000000000000000>, C4<00000000000000000000000000000000>, C4<00000000000000000000000000000000>;
+v0x557d2a5a4280_0 .net "CLK", 0 0, v0x557d2a5bb260_0;  1 drivers
+v0x557d2a5bac80_0 .net "PC", 31 0, v0x557d2a5bb320_0;  1 drivers
+v0x557d2a5bad60_0 .net "RST", 0 0, v0x557d2a5bb3f0_0;  1 drivers
+v0x557d2a5bae30_0 .net *"_s2", 31 0, L_0x557d2a5bb6e0;  1 drivers
+v0x557d2a5baf10 .array "icache", 0 7, 31 0;
+v0x557d2a5bb020_0 .net "index", 7 0, L_0x557d2a5bb5c0;  1 drivers
+v0x557d2a5bb100_0 .net "instruction", 31 0, L_0x557d2a5a47e0;  alias, 1 drivers
+E_0x557d2a5a57f0 .event posedge, v0x557d2a5bad60_0, v0x557d2a5a4280_0;
+L_0x557d2a5bb5c0 .part v0x557d2a5bb320_0, 0, 8;
+L_0x557d2a5bb6e0 .array/port v0x557d2a5baf10, L_0x557d2a5bb5c0;
+    .scope S_0x557d2a5a3fe0;
+T_0 ;
+    %wait E_0x557d2a5a57f0;
+    %load/vec4 v0x557d2a5bad60_0;
+    %pad/u 32;
+    %cmpi/e 1, 0, 32;
+    %jmp/0xz  T_0.0, 4;
+    %pushi/vec4 0, 0, 32;
+    %ix/load 3, 0, 0;
+    %flag_set/imm 4, 0;
+    %ix/load 4, 0, 0; Constant delay
+    %assign/vec4/a/d v0x557d2a5baf10, 0, 4;
+    %pushi/vec4 1, 0, 32;
+    %ix/load 3, 1, 0;
+    %flag_set/imm 4, 0;
+    %ix/load 4, 0, 0; Constant delay
+    %assign/vec4/a/d v0x557d2a5baf10, 0, 4;
+    %pushi/vec4 2, 0, 32;
+    %ix/load 3, 2, 0;
+    %flag_set/imm 4, 0;
+    %ix/load 4, 0, 0; Constant delay
+    %assign/vec4/a/d v0x557d2a5baf10, 0, 4;
+    %pushi/vec4 3, 0, 32;
+    %ix/load 3, 3, 0;
+    %flag_set/imm 4, 0;
+    %ix/load 4, 0, 0; Constant delay
+    %assign/vec4/a/d v0x557d2a5baf10, 0, 4;
+    %pushi/vec4 4, 0, 32;
+    %ix/load 3, 4, 0;
+    %flag_set/imm 4, 0;
+    %ix/load 4, 0, 0; Constant delay
+    %assign/vec4/a/d v0x557d2a5baf10, 0, 4;
+    %pushi/vec4 5, 0, 32;
+    %ix/load 3, 5, 0;
+    %flag_set/imm 4, 0;
+    %ix/load 4, 0, 0; Constant delay
+    %assign/vec4/a/d v0x557d2a5baf10, 0, 4;
+    %pushi/vec4 6, 0, 32;
+    %ix/load 3, 6, 0;
+    %flag_set/imm 4, 0;
+    %ix/load 4, 0, 0; Constant delay
+    %assign/vec4/a/d v0x557d2a5baf10, 0, 4;
+    %pushi/vec4 7, 0, 32;
+    %ix/load 3, 7, 0;
+    %flag_set/imm 4, 0;
+    %ix/load 4, 0, 0; Constant delay
+    %assign/vec4/a/d v0x557d2a5baf10, 0, 4;
+T_0.0 ;
+    %jmp T_0;
+    .thread T_0;
+    .scope S_0x557d2a56b0d0;
+T_1 ;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x557d2a5bb3f0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x557d2a5bb260_0, 0, 1;
+    %end;
+    .thread T_1;
+    .scope S_0x557d2a56b0d0;
+T_2 ;
+    %delay 3, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x557d2a5bb3f0_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x557d2a5bb3f0_0, 0, 1;
+    %end;
+    .thread T_2;
+    .scope S_0x557d2a56b0d0;
+T_3 ;
+    %delay 5, 0;
+    %load/vec4 v0x557d2a5bb260_0;
+    %nor/r;
+    %store/vec4 v0x557d2a5bb260_0, 0, 1;
+    %jmp T_3;
+    .thread T_3;
+    .scope S_0x557d2a56b0d0;
+T_4 ;
+    %vpi_call 2 14 "$dumpfile", "icache_tb.vcd" {0 0 0};
+    %vpi_call 2 15 "$dumpvars", 32'sb00000000000000000000000000000000, S_0x557d2a56b0d0 {0 0 0};
+    %end;
+    .thread T_4;
+    .scope S_0x557d2a56b0d0;
+T_5 ;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v0x557d2a5bb320_0, 0, 32;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 32;
+    %store/vec4 v0x557d2a5bb320_0, 0, 32;
+    %delay 10, 0;
+    %pushi/vec4 2, 0, 32;
+    %store/vec4 v0x557d2a5bb320_0, 0, 32;
+    %delay 10, 0;
+    %pushi/vec4 3, 0, 32;
+    %store/vec4 v0x557d2a5bb320_0, 0, 32;
+    %delay 10, 0;
+    %pushi/vec4 4, 0, 32;
+    %store/vec4 v0x557d2a5bb320_0, 0, 32;
+    %delay 10, 0;
+    %pushi/vec4 5, 0, 32;
+    %store/vec4 v0x557d2a5bb320_0, 0, 32;
+    %delay 10, 0;
+    %pushi/vec4 6, 0, 32;
+    %store/vec4 v0x557d2a5bb320_0, 0, 32;
+    %delay 10, 0;
+    %pushi/vec4 7, 0, 32;
+    %store/vec4 v0x557d2a5bb320_0, 0, 32;
+    %delay 10, 0;
+    %vpi_call 2 42 "$finish" {0 0 0};
+    %end;
+    .thread T_5;
+    .scope S_0x557d2a56b0d0;
+T_6 ;
+    %vpi_call 2 46 "$monitor", "At time %t, PC = %0d, instruction = %0d,", $time, v0x557d2a5bb320_0, v0x557d2a5bb4f0_0 {0 0 0};
+    %end;
+    .thread T_6;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "icache_tb.v";
+    "icache.v";
